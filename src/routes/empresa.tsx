@@ -29,10 +29,10 @@ function EmpresaPage() {
         description="Fabricamos plataformas computacionais robustas para os ambientes mais exigentes do mercado: ISPs, telecom, indústria, integradores e governo."
       />
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-surface-soft/50 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          <div className="lg:col-span-5 sticky top-32">
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
             <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-[10px] font-mono font-bold uppercase tracking-widest rounded-full mb-6">
               Quem Somos
             </div>
@@ -63,7 +63,7 @@ function EmpresaPage() {
 
       <section className="bg-surface-soft border-y border-border overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="p-12 lg:p-20 flex flex-col justify-center">
+          <div className="p-6 sm:p-10 lg:p-20 flex flex-col justify-center">
             <div className="text-xs font-mono font-bold text-primary uppercase tracking-widest mb-4">
               Nossa Trajetória
             </div>
@@ -83,7 +83,7 @@ function EmpresaPage() {
               </p>
             </div>
           </div>
-          <div className="relative min-h-[400px] lg:min-h-full order-first lg:order-last">
+          <div className="relative min-h-[260px] sm:min-h-[360px] lg:min-h-full order-first lg:order-last">
             <img 
               src="/sede-swh.png" 
               alt="Sede da SWH em São José dos Campos" 
@@ -93,7 +93,7 @@ function EmpresaPage() {
         </div>
       </section>
 
-      <section className="bg-surface-soft border-y border-border py-20">
+      <section className="bg-surface-soft border-y border-border py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-px bg-border ring-1 ring-border">
           {[
             {
@@ -112,7 +112,7 @@ function EmpresaPage() {
               text: "Engenharia rigorosa, transparência técnica, suporte humano, compromisso com prazos e investimento contínuo em qualidade.",
             },
           ].map(({ icon: Icon, label, text }) => (
-            <div key={label} className="bg-background p-10">
+            <div key={label} className="bg-background p-6 sm:p-10">
               <Icon className="size-8 text-primary mb-6" />
               <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground mb-2">
                 {label}
@@ -123,7 +123,7 @@ function EmpresaPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
         <h2 className="text-3xl font-bold mb-10">Nossos Diferenciais</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border ring-1 ring-border">
           {[
@@ -134,7 +134,7 @@ function EmpresaPage() {
             ["Estoque", "Disponibilidade imediata para entrega no Brasil"],
             ["OEM", "Projetos sob medida para integradores e marcas"],
           ].map(([k, v]) => (
-            <div key={k} className="bg-background p-8 hover:bg-surface-soft transition-colors">
+            <div key={k} className="bg-background p-6 sm:p-8 hover:bg-surface-soft transition-colors">
               <Award className="size-5 text-primary mb-4" />
               <div className="font-bold text-lg mb-2">{k}</div>
               <div className="text-sm text-muted-foreground">{v}</div>
@@ -162,17 +162,17 @@ export function PageHeader({
   bgColor?: string;
 }) {
   return (
-    <section className={`${bgColor} text-white py-20 lg:py-28 relative overflow-hidden`}>
+    <section className={`${bgColor} text-white py-12 sm:py-16 lg:py-28 relative overflow-hidden`}>
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent" />
       </div>
       <div className="absolute inset-0 grid-dots opacity-50" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="font-mono text-xs text-primary font-bold uppercase tracking-widest mb-4">
           {eyebrow}
         </div>
-        <h1 className="text-4xl lg:text-6xl font-extrabold leading-[1.05] mb-6 max-w-3xl text-balance">
+        <h1 className="text-[clamp(2rem,9vw,4rem)] lg:text-6xl font-extrabold leading-[1.05] mb-6 max-w-3xl text-balance">
           {title}
         </h1>
         {description && (
@@ -182,5 +182,4 @@ export function PageHeader({
     </section>
   );
 }
-
 

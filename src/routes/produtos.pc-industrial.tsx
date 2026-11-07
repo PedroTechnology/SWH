@@ -93,7 +93,7 @@ function PabxIpPage() {
 
   return (
     <>
-      <section className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-20">
         {!selectedProduct ? (
           <div>
             <h2 className="text-3xl font-bold mb-10">Appliances para PABX IP</h2>

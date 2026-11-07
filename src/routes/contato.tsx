@@ -43,7 +43,7 @@ function ContatoPage() {
         description="Cotações, datasheets, suporte técnico e projetos OEM. Respondemos em horário comercial brasileiro."
       />
 
-      <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-5 gap-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 grid lg:grid-cols-5 gap-8 lg:gap-12">
         {/* Form */}
         <div className="lg:col-span-3">
           <div className="text-xs font-mono font-bold text-primary uppercase tracking-widest mb-3">
@@ -85,7 +85,7 @@ function ContatoPage() {
               </div>
               <button
                 type="submit"
-                className="bg-primary text-primary-foreground px-8 py-4 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-2"
+                className="w-full sm:w-auto bg-primary text-primary-foreground px-5 sm:px-8 py-4 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all inline-flex items-center justify-center gap-2"
               >
                 Enviar Solicitação <Send className="size-4" />
               </button>

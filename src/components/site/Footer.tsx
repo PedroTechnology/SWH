@@ -8,9 +8,9 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`
 
 export function Footer() {
   return (
-    <footer className="w-full mt-16">
+    <footer className="site-footer w-full mt-16">
       {/* Top Section - Blue CTA */}
-      <div className="bg-[#0066cc] py-16 px-6 text-center">
+      <div className="bg-[#0066cc] py-12 sm:py-16 px-4 sm:px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Precisa de um projeto personalizado?
         </h2>
@@ -36,8 +36,8 @@ export function Footer() {
       </div>
 
       {/* Bottom Section - Dark Footer */}
-      <div className="bg-[#0f172a] pt-16 pb-8 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="bg-[#0f172a] pt-12 sm:pt-16 pb-8 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           {/* Column 1: Brand & Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">

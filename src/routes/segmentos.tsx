@@ -41,12 +41,12 @@ function SegmentosPage() {
         image="/hero-segmentos.png"
       />
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
         <div className="grid md:grid-cols-2 gap-px bg-border ring-1 ring-border">
           {segments.map((s) => {
             const Icon = icons[s.slug as keyof typeof icons];
             return (
-              <article key={s.slug} className="bg-background p-10 hover:bg-surface-soft transition-colors">
+              <article key={s.slug} className="bg-background p-6 sm:p-10 hover:bg-surface-soft transition-colors">
                 <Icon className="size-8 text-primary mb-6" />
                 <h2 className="text-2xl font-bold mb-6">{s.name}</h2>
 

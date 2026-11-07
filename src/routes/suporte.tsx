@@ -73,10 +73,10 @@ function SuportePage() {
         description="Tudo o que você precisa para manter sua operação rodando: garantia, RMA, downloads e respostas rápidas."
       />
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border ring-1 ring-border mb-16">
           {cards.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="bg-background p-8 hover:bg-surface-soft transition-colors">
+            <div key={title} className="bg-background p-6 sm:p-8 hover:bg-surface-soft transition-colors">
               <Icon className="size-7 text-primary mb-4" />
               <h3 className="font-bold text-lg mb-3">{title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>

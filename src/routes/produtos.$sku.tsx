@@ -201,7 +201,7 @@ function ProductDetailPage() {
 
   return (
     <>
-      <section className="max-w-7xl mx-auto px-6 pt-8 pb-8 md:pt-12 md:pb-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8 md:pt-12 md:pb-12">
         {/* Breadcrumb */}
         <nav
           className="mb-6 flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground"
@@ -221,10 +221,10 @@ function ProductDetailPage() {
         {/* Product Row – Image | Info (full width, aligned with header/footer) */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left Column – Image Gallery */}
-          <div className="space-y-3 sticky top-24 lg:top-32">
+          <div className="space-y-3 lg:sticky lg:top-32">
             {/* Main Image */}
             <div
-              className="relative bg-white border border-border rounded-sm overflow-hidden h-[420px] lg:h-[480px] cursor-pointer"
+              className="relative bg-white border border-border rounded-sm overflow-hidden h-[280px] sm:h-[360px] lg:h-[480px] cursor-pointer"
               onClick={() => setZoomedImage(productImages[selectedImage])}
             >
               <img
@@ -396,7 +396,7 @@ function ProductDetailPage() {
             </div>
 
             {/* Product Name */}
-            <h1 className="text-3xl lg:text-4xl font-extrabold leading-[1.1] text-balance text-foreground">
+            <h1 className="text-[clamp(1.75rem,7vw,2.25rem)] lg:text-4xl font-extrabold leading-[1.1] text-balance text-foreground">
               {productName}
             </h1>
 
@@ -417,7 +417,7 @@ function ProductDetailPage() {
                         <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary">
                           {h.label}
                         </div>
-                        <div className="text-sm text-muted-foreground leading-relaxed truncate">
+                        <div className="text-sm text-muted-foreground leading-relaxed break-words">
                           {h.value}
                         </div>
                       </div>
@@ -450,7 +450,7 @@ function ProductDetailPage() {
             onValueChange={(v) => setActiveTab(v as typeof activeTab)}
             className="w-full"
           >
-            <TabsList className="grid h-auto min-h-12 w-full grid-cols-4 items-stretch rounded-none bg-surface-soft p-0">
+            <TabsList className="grid h-auto min-h-12 w-full grid-cols-2 sm:grid-cols-4 items-stretch rounded-none bg-surface-soft p-0">
               {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.id}

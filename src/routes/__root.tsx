@@ -121,7 +121,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
@@ -139,7 +139,7 @@ function RootComponent() {
     const removeHostingBadge = () => {
       document
         .querySelectorAll<HTMLElement>(
-          'a[href*="netlify.com"], [data-netlify-badge], [class*="netlify-badge"], [id*="netlify-badge"], iframe[src*="netlify.com"]',
+          '#nl-badge-frame, a[href*="netlify.com"], [data-netlify-badge], [class*="netlify-badge"], [id*="netlify-badge"], iframe[title="Powered by Netlify"], iframe[src*="netlify.com"]',
         )
         .forEach((element) => element.remove());
     };
@@ -164,7 +164,7 @@ function RootComponent() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20B357] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-[#25D366] hover:bg-[#20B357] text-white size-12 sm:size-14 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
           aria-label="WhatsApp Comercial"
         >
           <img src={whatsappIcon} alt="WhatsApp" className="w-10 h-10" />

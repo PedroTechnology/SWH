@@ -108,7 +108,7 @@ function ProdutosPage() {
         description="Toda a linha de hardware industrial SWH. Selecione um modelo para ver detalhes completos e solicitar cotação."
       />
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
         <div className="flex flex-wrap gap-2 mb-10">
           {filters.map((f) => (
             <button

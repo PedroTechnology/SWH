@@ -55,8 +55,8 @@ function SolucoesPage() {
         bgColor="bg-[#020408]"
       />
 
-      <section className="py-24 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section className="py-12 sm:py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-pretty">
             <h2 className="text-3xl font-bold text-foreground mb-8">
               Appliance Firewall
@@ -90,7 +90,7 @@ function SolucoesPage() {
             </p>
           </div>
 
-          <div className="bg-surface-soft p-10 lg:p-14 border border-border rounded-xl shadow-sm sticky top-32">
+          <div className="bg-surface-soft p-6 sm:p-10 lg:p-14 border border-border rounded-xl shadow-sm lg:sticky lg:top-32">
             <h3 className="text-2xl font-bold text-foreground mb-6">
               Por Que Escolher um Appliance Dedicado?
             </h3>
@@ -137,8 +137,8 @@ function SolucoesPage() {
         </div>
       </section>
 
-      <section className="bg-navy text-white py-24 border-y border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-navy text-white py-12 sm:py-16 lg:py-24 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-balance">Funcionalidades Avançadas para um Cenário Complexo</h2>
             <p className="text-white/70 text-lg text-pretty">
@@ -167,7 +167,7 @@ function SolucoesPage() {
         </div>
       </section>
 
-      <section className="py-24 max-w-4xl mx-auto px-6 text-center">
+      <section className="py-12 sm:py-16 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-full mb-8">
           <Lock className="size-8 text-primary" />
         </div>

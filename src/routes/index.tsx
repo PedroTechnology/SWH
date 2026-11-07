@@ -74,7 +74,7 @@ function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-24 lg:py-32 overflow-hidden bg-[#0f172a]">
+      <section className="relative py-12 sm:py-16 lg:py-32 overflow-hidden bg-[#0f172a]">
         {/* Vídeo de fundo do data center */}
         <video
           autoPlay
@@ -93,7 +93,7 @@ function HomePage() {
           }}
         />
         <div className="absolute inset-0 grid-dots opacity-40 pointer-events-none z-30" />
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-40">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 mb-6">
               <span className="size-2 rounded-full bg-primary animate-pulse" />
@@ -101,23 +101,23 @@ function HomePage() {
                 Hardware de Missão Crítica
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-8 text-balance">
+            <h1 className="text-[clamp(2rem,9vw,4.5rem)] sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-8 text-balance">
               Soluções <span className="text-primary">Industriais</span> para Ambientes Críticos
             </h1>
             <p className="text-white/70 text-lg mb-10 max-w-lg text-pretty">
               Desenvolvemos e fabricamos plataformas computacionais robustas para segurança,
               comunicação e operação de infraestruturas corporativas e industriais.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
               <Link
                 to="/produtos"
-                className="bg-primary text-primary-foreground px-8 py-4 font-bold uppercase text-sm tracking-widest hover:brightness-110 transition-all shadow-xl shadow-primary/20 inline-flex items-center gap-2"
+                className="bg-primary text-primary-foreground px-5 sm:px-8 py-4 font-bold uppercase text-sm tracking-widest hover:brightness-110 transition-all shadow-xl shadow-primary/20 inline-flex items-center justify-center gap-2"
               >
                 Conhecer Appliances <ArrowRight className="size-4" />
               </Link>
               <Link
                 to="/solucoes"
-                className="border border-white/20 text-white px-8 py-4 font-bold uppercase text-sm tracking-widest hover:bg-white hover:text-navy transition-all"
+                className="border border-white/20 text-white px-5 sm:px-8 py-4 font-bold uppercase text-sm tracking-widest hover:bg-white hover:text-navy transition-all text-center"
               >
                 Projetos OEM
               </Link>
@@ -161,7 +161,7 @@ function HomePage() {
       </section>
 
       {/* Solutions grid */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
+      <section className="py-12 sm:py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
           <div className="max-w-2xl">
             <div className="text-xs font-mono font-bold text-primary uppercase tracking-widest mb-3">
@@ -225,7 +225,7 @@ function HomePage() {
 
 
       {/* Differentials */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
+      <section className="py-12 sm:py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-3 gap-12">
           <div>
             <div className="text-xs font-mono font-bold text-primary uppercase tracking-widest mb-3">
