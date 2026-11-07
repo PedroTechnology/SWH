@@ -65,7 +65,7 @@ export function Footer() {
               Soluções
             </h3>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><Link to="/solucoes" className="hover:text-white transition-colors">Appliances Firewall</Link></li>
+              <li><Link to="/produtos" search={{ category: "firewall" }} className="hover:text-white transition-colors">Appliances Firewall</Link></li>
               <li><Link to="/produtos/pc-industrial" className="hover:text-white transition-colors">Appliances PABX-IP</Link></li>
               <li><Link to="/produtos" search={{ category: "pc-industrial" }} className="hover:text-white transition-colors">Computadores Industriais</Link></li>
               <li><Link to="/contato" className="hover:text-white transition-colors">Plataformas OEM</Link></li>
