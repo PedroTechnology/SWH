@@ -9,7 +9,7 @@ import catOem from "@/assets/cat-oem.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SWH — Soluções Computacionais Industriais para Ambientes Críticos" },
+      { title: "SWH - Tecnologia Computacional" },
       {
         name: "description",
         content:
