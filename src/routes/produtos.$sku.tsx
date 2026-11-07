@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Shield, ArrowUpRight, ExternalLink } from "lucide-react";
 import { products } from "@/lib/products";
 import { getProductDetail } from "@/lib/productDetails";
@@ -23,6 +23,33 @@ import weaF792je from "@/assets/wea-f792je.jpg";
 import wecBlj41ms2 from "@/assets/wec-blj41ms2.jpg";
 import wecBlci3400su from "@/assets/wec-blci3400su.jpg";
 import wecBlci55200u from "@/assets/wec-blci55200u.jpg";
+import weaEpj414l1 from "@/assets/wea-epj414l-1.jpg";
+import weaEpj414l2 from "@/assets/wea-epj414l-2.jpg";
+import weaSw1p4l1 from "@/assets/wea-sw1p4l-1.jpg";
+import weaSw1p4l2 from "@/assets/wea-sw1p4l-2.jpg";
+import weaRoj414l1 from "@/assets/wea-roj414l-1.jpg";
+import weaRoj414l2 from "@/assets/wea-roj414l-2.jpg";
+import weaRoj416l1 from "@/assets/wea-roj416l-1.jpg";
+import weaRoj416l2 from "@/assets/wea-roj416l-2.jpg";
+import weaB75a6l1 from "@/assets/wea-b75a6l-1.jpg";
+import weaB75a6l2 from "@/assets/wea-b75a6l-2.jpg";
+import weaB75a6l3 from "@/assets/wea-b75a6l-3.jpg";
+import weaAt1581n1 from "@/assets/wea-at1581n-1.jpg";
+import weaAt1581n2 from "@/assets/wea-at1581n-2.jpg";
+import weaF592je1 from "@/assets/wea-f592je-1.jpg";
+import weaF592je2 from "@/assets/wea-f592je-2.jpg";
+import weaAt17811 from "@/assets/wea-at1781-1.jpg";
+import weaAt17812 from "@/assets/wea-at1781-2.jpg";
+import weaAtc2361 from "@/assets/wea-atc236-1.jpg";
+import weaAtc2362 from "@/assets/wea-atc236-2.jpg";
+import weaF594je1 from "@/assets/wea-f594je-1.jpg";
+import weaF792je1 from "@/assets/wea-f792je-1.jpg";
+import wecBlj41ms21 from "@/assets/wec-blj41ms2-1.jpg";
+import wecBlj41ms22 from "@/assets/wec-blj41ms2-2.jpg";
+import wecBlci3400su1 from "@/assets/wec-blci3400su-1.jpg";
+import wecBlci3400su2 from "@/assets/wec-blci3400su-2.jpg";
+import wecBlci55200u1 from "@/assets/wec-blci55200u-1.jpg";
+import wecBlci55200u2 from "@/assets/wec-blci55200u-2.jpg";
 
 // Map nome do arquivo → imagem importada
 const productImagesMap: Record<string, string> = {
@@ -40,24 +67,51 @@ const productImagesMap: Record<string, string> = {
   "wec-blj41ms2.jpg": wecBlj41ms2,
   "wec-blci3400su.jpg": wecBlci3400su,
   "wec-blci55200u.jpg": wecBlci55200u,
+  "wea-epj414l-1.jpg": weaEpj414l1,
+  "wea-epj414l-2.jpg": weaEpj414l2,
+  "wea-sw1p4l-1.jpg": weaSw1p4l1,
+  "wea-sw1p4l-2.jpg": weaSw1p4l2,
+  "wea-roj414l-1.jpg": weaRoj414l1,
+  "wea-roj414l-2.jpg": weaRoj414l2,
+  "wea-roj416l-1.jpg": weaRoj416l1,
+  "wea-roj416l-2.jpg": weaRoj416l2,
+  "wea-b75a6l-1.jpg": weaB75a6l1,
+  "wea-b75a6l-2.jpg": weaB75a6l2,
+  "wea-b75a6l-3.jpg": weaB75a6l3,
+  "wea-at1581n-1.jpg": weaAt1581n1,
+  "wea-at1581n-2.jpg": weaAt1581n2,
+  "wea-f592je-1.jpg": weaF592je1,
+  "wea-f592je-2.jpg": weaF592je2,
+  "wea-at1781-1.jpg": weaAt17811,
+  "wea-at1781-2.jpg": weaAt17812,
+  "wea-atc236-1.jpg": weaAtc2361,
+  "wea-atc236-2.jpg": weaAtc2362,
+  "wea-f594je-1.jpg": weaF594je1,
+  "wea-f792je-1.jpg": weaF792je1,
+  "wec-blj41ms2-1.jpg": wecBlj41ms21,
+  "wec-blj41ms2-2.jpg": wecBlj41ms22,
+  "wec-blci3400su-1.jpg": wecBlci3400su1,
+  "wec-blci3400su-2.jpg": wecBlci3400su2,
+  "wec-blci55200u-1.jpg": wecBlci55200u1,
+  "wec-blci55200u-2.jpg": wecBlci55200u2,
 };
 
 // Map SKU → array de nomes de arquivos de imagem
 const skuImageFiles: Record<string, string[]> = {
-  "WEA-EPJ414L": ["wea-epj414l.jpg"],
-  "WEA-SW1P4L": ["wea-sw1p4l.jpg"],
-  "WEA-ROJ414L": ["wea-roj414l.jpg"],
-  "WEA-ROJ416L": ["wea-roj416l.jpg"],
-  "WEA-B75A6L": ["wea-b75a6l.jpg"],
-  "WEA-AT1581N": ["wea-at1581n.jpg"],
-  "WEA-F592JE": ["wea-f592je.jpg"],
-  "WEA-AT1781": ["wea-at1781.jpg"],
-  "WEA-ATC236": ["wea-atc236.jpg"],
-  "WEA-F594JE": ["wea-f594je.jpg"],
-  "WEA-F792JE": ["wea-f792je.jpg"],
-  "WEC-BLJ41MS2": ["wec-blj41ms2.jpg"],
-  "WEC-BLCI3400SU": ["wec-blci3400su.jpg"],
-  "WEC-BLCI55200U": ["wec-blci55200u.jpg"],
+  "WEA-EPJ414L": ["wea-epj414l.jpg", "wea-epj414l-1.jpg", "wea-epj414l-2.jpg"],
+  "WEA-SW1P4L": ["wea-sw1p4l.jpg", "wea-sw1p4l-1.jpg", "wea-sw1p4l-2.jpg"],
+  "WEA-ROJ414L": ["wea-roj414l.jpg", "wea-roj414l-1.jpg", "wea-roj414l-2.jpg"],
+  "WEA-ROJ416L": ["wea-roj416l.jpg", "wea-roj416l-1.jpg", "wea-roj416l-2.jpg"],
+  "WEA-B75A6L": ["wea-b75a6l.jpg", "wea-b75a6l-1.jpg", "wea-b75a6l-2.jpg", "wea-b75a6l-3.jpg"],
+  "WEA-AT1581N": ["wea-at1581n.jpg", "wea-at1581n-1.jpg", "wea-at1581n-2.jpg"],
+  "WEA-F592JE": ["wea-f592je.jpg", "wea-f592je-1.jpg", "wea-f592je-2.jpg"],
+  "WEA-AT1781": ["wea-at1781.jpg", "wea-at1781-1.jpg", "wea-at1781-2.jpg"],
+  "WEA-ATC236": ["wea-atc236.jpg", "wea-atc236-1.jpg", "wea-atc236-2.jpg"],
+  "WEA-F594JE": ["wea-f594je.jpg", "wea-f594je-1.jpg"],
+  "WEA-F792JE": ["wea-f792je.jpg", "wea-f792je-1.jpg"],
+  "WEC-BLJ41MS2": ["wec-blj41ms2.jpg", "wec-blj41ms2-1.jpg", "wec-blj41ms2-2.jpg"],
+  "WEC-BLCI3400SU": ["wec-blci3400su.jpg", "wec-blci3400su-1.jpg", "wec-blci3400su-2.jpg"],
+  "WEC-BLCI55200U": ["wec-blci55200u.jpg", "wec-blci55200u-1.jpg", "wec-blci55200u-2.jpg"],
 };
 
 // Map SKU → array de imagens importadas (resolvidas)
@@ -97,6 +151,17 @@ function ProductDetailPage() {
   const [activeTab, setActiveTab] = useState<"desc" | "specs" | "diff" | "downloads">("desc");
   const [selectedImage, setSelectedImage] = useState(0);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const thumbnailTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSelectedImage(0);
+  }, [sku]);
+
+  useEffect(() => {
+    const selectedThumbnail = thumbnailTrackRef.current?.children[selectedImage] as HTMLElement | undefined;
+    selectedThumbnail?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  }, [selectedImage]);
+
   useEffect(() => {
     if (zoomedImage) {
       document.body.classList.add("zoom-modal-open");
@@ -165,7 +230,7 @@ function ProductDetailPage() {
               <img
                 src={productImages[selectedImage]}
                 alt={productName}
-                className="w-full h-full object-cover transition-opacity duration-300"
+                className="w-full h-full object-contain transition-opacity duration-300"
                 loading="eager"
               />
               <div className="absolute bottom-2 right-2 bg-black/60 text-white px-2 py-1 rounded text-[10px]">
@@ -203,22 +268,51 @@ function ProductDetailPage() {
               )}
             </div>
 
-            {/* Thumbnails abaixo da imagem principal – linha horizontal */}
-            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
-              {productImages.map((img, idx) => (
+            {/* Thumbnails abaixo da imagem principal */}
+            {productImages.length > 1 && (
+              <div className="relative flex items-center gap-2">
                 <button
-                  key={idx}
-                  onClick={() => setSelectedImage(idx)}
-                  className={`shrink-0 aspect-[4/3] w-24 overflow-hidden rounded-sm border-2 transition-all ${
-                    selectedImage === idx
-                      ? "border-primary bg-primary/10"
-                      : "border-transparent hover:border-primary/50"
-                  }`}
+                  type="button"
+                  onClick={() => thumbnailTrackRef.current?.scrollBy({ left: -220, behavior: "smooth" })}
+                  className="shrink-0 bg-white border border-border text-navy w-9 h-9 rounded-full flex items-center justify-center hover:border-primary transition-colors"
+                  aria-label="Ver thumbnails anteriores"
                 >
-                  <img src={img} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                  <ChevronLeft className="size-4" />
                 </button>
-              ))}
-            </div>
+                <div
+                  ref={thumbnailTrackRef}
+                  className="flex gap-2 overflow-x-auto pb-2 no-scrollbar flex-1 scroll-smooth touch-pan-x"
+                >
+                  {productImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setSelectedImage(idx)}
+                      aria-label={`Selecionar imagem ${idx + 1}`}
+                      className={`shrink-0 aspect-[4/3] w-24 overflow-hidden rounded-sm border-2 transition-all bg-white ${
+                        selectedImage === idx
+                          ? "border-primary bg-primary/10"
+                          : "border-transparent hover:border-primary/50"
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${productName} - imagem ${idx + 1}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => thumbnailTrackRef.current?.scrollBy({ left: 220, behavior: "smooth" })}
+                  className="shrink-0 bg-white border border-border text-navy w-9 h-9 rounded-full flex items-center justify-center hover:border-primary transition-colors"
+                  aria-label="Ver próximas thumbnails"
+                >
+                  <ChevronRight className="size-4" />
+                </button>
+              </div>
+            )}
 
             {/* Modal de zoom – fullscreen, z-index acima do header */}
             {zoomedImage && (
