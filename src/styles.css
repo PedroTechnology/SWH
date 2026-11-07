@@ -146,3 +146,11 @@
 body.zoom-modal-open nav.sticky {
   display: none !important;
 }
+
+a[href*="netlify.com"],
+[data-netlify-badge],
+[class*="netlify-badge"],
+[id*="netlify-badge"],
+iframe[src*="netlify.com"] {
+  display: none !important;
+}

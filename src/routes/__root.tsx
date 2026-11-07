@@ -137,14 +137,11 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   useEffect(() => {
     const removeHostingBadge = () => {
-      for (const element of document.body.querySelectorAll<HTMLElement>("*")) {
-        if (
-          element.children.length === 0 &&
-          element.textContent?.toLowerCase().includes("powered by netlify")
-        ) {
-          element.style.display = "none";
-        }
-      }
+      document
+        .querySelectorAll<HTMLElement>(
+          'a[href*="netlify.com"], [data-netlify-badge], [class*="netlify-badge"], [id*="netlify-badge"], iframe[src*="netlify.com"]',
+        )
+        .forEach((element) => element.remove());
     };
 
     removeHostingBadge();
