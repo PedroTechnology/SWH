@@ -465,7 +465,7 @@ function ProductDetailPage() {
             {/* Descrição */}
             <TabsContent
               value="desc"
-              className="mt-0 bg-white border border-border rounded-b-sm p-8 min-h-[400px]"
+              className="mt-0 h-auto bg-white border border-border rounded-b-sm p-8"
             >
               <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed text-sm">
                 {fullDescription}
@@ -475,7 +475,7 @@ function ProductDetailPage() {
             {/* Especificações Técnicas */}
             <TabsContent
               value="specs"
-              className="mt-0 bg-white border border-border rounded-b-sm p-8 min-h-[400px]"
+              className="mt-0 h-auto bg-white border border-border rounded-b-sm p-8"
             >
               {techSpecs.length > 0 ? (
                 <div className="flex flex-col text-sm">
@@ -504,7 +504,7 @@ function ProductDetailPage() {
             {/* Diferencial */}
             <TabsContent
               value="diff"
-              className="mt-0 bg-white border border-border rounded-b-sm p-8 min-h-[400px]"
+              className="mt-0 h-auto bg-white border border-border rounded-b-sm p-8"
             >
               {differentials.length > 0 ? (
                 <div className="space-y-4">
@@ -531,7 +531,7 @@ function ProductDetailPage() {
             {/* Downloads */}
             <TabsContent
               value="downloads"
-              className="mt-0 bg-white border border-border rounded-b-sm p-8 min-h-[400px]"
+              className="mt-0 h-auto bg-white border border-border rounded-b-sm p-8"
             >
               {downloads.length > 0 ? (
                 <div className="grid sm:grid-cols-2 gap-4">
