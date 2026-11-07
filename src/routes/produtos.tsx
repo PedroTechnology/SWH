@@ -75,16 +75,13 @@ type Filter = (typeof filters)[number]["id"];
 
 function ProdutosPage() {
   const childMatches = useChildMatches();
+  const [filter, setFilter] = useState<Filter>("all");
+  const list = filter === "all" ? products : products.filter((p) => p.category === filter);
 
-  // When navigating to /produtos/$sku, the child detail page must render.
-  // Without this, TanStack Router renders the parent catalog AND has nowhere
-  // to mount the child because there is no <Outlet /> here.
+  // Keep the parent hooks stable during transitions to child product routes.
   if (childMatches.length > 0) {
     return <Outlet />;
   }
-
-  const [filter, setFilter] = useState<Filter>("all");
-  const list = filter === "all" ? products : products.filter((p) => p.category === filter);
 
   return (
     <>
