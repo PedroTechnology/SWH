@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, useChildMatches, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products, type Product } from "@/lib/products";
 import { PageHeader } from "./empresa";
 import { ChevronRight } from "lucide-react";
@@ -39,6 +39,14 @@ const productImages: Record<string, string> = {
 };
 
 export const Route = createFileRoute("/produtos")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    category:
+      search.category === "firewall" ||
+      search.category === "pabx" ||
+      search.category === "pc-industrial"
+        ? search.category
+        : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Produtos — Catálogo Completo de Appliances | SWH" },
@@ -75,8 +83,17 @@ type Filter = (typeof filters)[number]["id"];
 
 function ProdutosPage() {
   const childMatches = useChildMatches();
-  const [filter, setFilter] = useState<Filter>("all");
+  const { category } = Route.useSearch();
+  const initialFilter: Filter =
+    category === "firewall" || category === "pabx" || category === "pc-industrial"
+      ? category
+      : "all";
+  const [filter, setFilter] = useState<Filter>(initialFilter);
   const list = filter === "all" ? products : products.filter((p) => p.category === filter);
+
+  useEffect(() => {
+    setFilter(initialFilter);
+  }, [category]);
 
   // Keep the parent hooks stable during transitions to child product routes.
   if (childMatches.length > 0) {
