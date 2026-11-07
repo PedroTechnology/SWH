@@ -135,6 +135,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    const removeHostingBadge = () => {
+      for (const element of document.body.querySelectorAll<HTMLElement>("*")) {
+        if (
+          element.children.length === 0 &&
+          element.textContent?.toLowerCase().includes("powered by netlify")
+        ) {
+          element.style.display = "none";
+        }
+      }
+    };
+
+    removeHostingBadge();
+    const observer = new MutationObserver(removeHostingBadge);
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
