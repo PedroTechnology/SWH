@@ -3,6 +3,76 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/produtos/WEA-EPJ414L"
+  to = "/produtos/appliance-firewall-pfsense-WEA-EPJ414L"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-SW1P4L"
+  to = "/produtos/appliance-firewall-pfsense-WEA-SW1P4L"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-ROJ414L"
+  to = "/produtos/appliance-firewall-pfsense-WEA-ROJ414L"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-ROJ416L"
+  to = "/produtos/appliance-firewall-pfsense-WEA-ROJ416L"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-GTJ646L"
+  to = "/produtos/appliance-firewall-pfsense-WEA-GTJ646L"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-AT1581N"
+  to = "/produtos/appliance-firewall-pfsense-WEA-AT1581N"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-F592JE"
+  to = "/produtos/appliance-firewall-pfsense-WEA-F592JE"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-AT1781"
+  to = "/produtos/appliance-firewall-pfsense-WEA-AT1781"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-ATC236"
+  to = "/produtos/appliance-firewall-pfsense-WEA-ATC236"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-F594JE"
+  to = "/produtos/appliance-pabx-ip-WEA-F594JE"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEA-F792JE"
+  to = "/produtos/appliance-pabx-ip-WEA-F792JE"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEC-BLJ41MS2"
+  to = "/produtos/pc-industrial-fanless-WEC-BLJ41MS2"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEC-BLCI3400SU"
+  to = "/produtos/pc-industrial-fanless-WEC-BLCI3400SU"
+  status = 301
+
+[[redirects]]
+  from = "/produtos/WEC-BLCI55200U"
+  to = "/produtos/pc-industrial-fanless-WEC-BLCI55200U"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
   status = 200

@@ -1,8 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Shield, ArrowUpRight, ExternalLink } from "lucide-react";
 import { products } from "@/lib/products";
 import { getProductDetail } from "@/lib/productDetails";
+import { getProductSlug, getProductSku } from "@/lib/product-slugs";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -121,13 +122,33 @@ Object.entries(skuImageFiles).forEach(([sku, files]) => {
 });
 
 export const Route = createFileRoute("/produtos/$sku")({
+  beforeLoad: ({ params }) => {
+    const sku = getProductSku(params.sku);
+    const canonicalSlug = getProductSlug(sku);
+
+    if (params.sku !== canonicalSlug) {
+      throw redirect({
+        to: "/produtos/$sku",
+        params: { sku: canonicalSlug },
+        search: (previous) => ({ category: previous.category }),
+        statusCode: 301,
+      });
+    }
+  },
   head: ({ params }) => {
-    const detail = getProductDetail(params.sku);
-    const catalog = products.find((p) => p.sku === params.sku);
-    const name = detail?.name ?? catalog?.name ?? params.sku;
+    const sku = getProductSku(params.sku);
+    const detail = getProductDetail(sku);
+    const catalog = products.find((p) => p.sku === sku);
+    const name = detail?.name ?? catalog?.name ?? sku;
     const description =
       detail?.shortDescription ?? "Appliance SWH — especificações técnicas completas.";
     return {
+      links: [
+        {
+          rel: "canonical",
+          href: `https://www.swh.net.br/produtos/${getProductSlug(sku)}`,
+        },
+      ],
       meta: [
         { title: `${name} — SWH` },
         { name: "description", content: description },
@@ -140,7 +161,8 @@ export const Route = createFileRoute("/produtos/$sku")({
 });
 
 function ProductDetailPage() {
-  const { sku } = Route.useParams();
+  const { sku: routeParam } = Route.useParams();
+  const sku = getProductSku(routeParam);
 
   // Prefer detailed data; fall back to catalog data
   const detail = getProductDetail(sku);
@@ -606,7 +628,7 @@ function RelatedProducts({ currentSku }: { currentSku: string }) {
           return (
             <a
               key={p.sku}
-              href={`/produtos/${p.sku}`}
+              href={`/produtos/${getProductSlug(p.sku)}`}
               className="group bg-white border border-border hover:border-primary transition-colors flex flex-col"
             >
               <div className="aspect-[5/3] overflow-hidden bg-surface-soft">

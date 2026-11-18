@@ -1,10 +1,23 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Linkedin, Facebook, Instagram, MapPin, Phone, Mail, Rss } from "lucide-react";
 
 const WHATSAPP_NUMBER = "5512991142389";
 const WHATSAPP_MESSAGE =
   "Ol%C3%A1!%20Seja%20bem-vindo(a)!%20%0AAgradecemos%20seu%20contato!%20Ser%C3%A1%20um%20prazer%20atend%C3%AA-lo(a).%0AComo%20podemos%20ajudar%20voc%C3%AA%20hoje%3F";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.967 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -47,14 +60,20 @@ export function Footer() {
               Soluções computacionais robustas para segurança, comunicação e infraestruturas industriais. Tecnologia nacional com padrão internacional desde 1999.
             </p>
             <div className="flex gap-3 pt-2">
-              <a href="#" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="LinkedIn">
+              <a href="https://br.linkedin.com/company/swh-tecnologia-computacional" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="LinkedIn da SWH">
                 <Linkedin className="size-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="Facebook">
+              <a href="https://www.instagram.com/swhtecnologia/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="Instagram da SWH">
+                <Instagram className="size-4" />
+              </a>
+              <a href="https://www.facebook.com/swhsolutions/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="Facebook da SWH">
                 <Facebook className="size-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="Instagram">
-                <Instagram className="size-4" />
+              <a href="https://blog.swhsolutions.com.br/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="Blog da SWH">
+                <Rss className="size-4" />
+              </a>
+              <a href="https://x.com/Swh_Inf" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center rounded transition-colors text-slate-300 hover:text-white" aria-label="SWH no X">
+                <XIcon className="size-4" />
               </a>
             </div>
           </div>

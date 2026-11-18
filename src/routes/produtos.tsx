@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, useChildMatches, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { products, type Product } from "@/lib/products";
+import { getProductSlug } from "@/lib/product-slugs";
 import { PageHeader } from "./empresa";
 import { ChevronRight } from "lucide-react";
 
@@ -89,7 +90,11 @@ function ProdutosPage() {
       ? category
       : "all";
   const [filter, setFilter] = useState<Filter>(initialFilter);
-  const list = filter === "all" ? products : products.filter((p) => p.category === filter);
+  const catalogProducts = products.filter((product) => product.sku !== "WEA-EPJ414L");
+  const list =
+    filter === "all"
+      ? catalogProducts
+      : catalogProducts.filter((product) => product.category === filter);
 
   useEffect(() => {
     setFilter(initialFilter);
@@ -177,8 +182,8 @@ function ProductCard({ product }: { product: Product }) {
           ))}
         </ul>
         <button
-          onClick={() => navigate({ to: `/produtos/${product.sku}` })}
-          className="flex items-center justify-center gap-2 w-full py-3 bg-surface-soft text-foreground text-[10px] font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition-all group cursor-pointer"
+          onClick={() => navigate({ to: `/produtos/${getProductSlug(product.sku)}` })}
+          className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all group cursor-pointer"
         >
           VEJA MAIS
           <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />

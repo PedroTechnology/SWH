@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { products } from "@/lib/products";
+import { getProductSlug, productSlugsBySku } from "@/lib/product-slugs";
 
-const BASE_URL = "";
+const BASE_URL = "https://www.swh.net.br";
 
 interface SitemapEntry {
   path: string;
@@ -21,6 +23,18 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/segmentos", changefreq: "monthly", priority: "0.7" },
           { path: "/suporte", changefreq: "monthly", priority: "0.6" },
           { path: "/contato", changefreq: "monthly", priority: "0.7" },
+          ...products.map((product) => ({
+            path: `/produtos/${getProductSlug(product.sku)}`,
+            changefreq: "weekly" as const,
+            priority: "0.8",
+          })),
+          ...Object.entries(productSlugsBySku)
+            .filter(([sku]) => !products.some((product) => product.sku === sku))
+            .map(([, slug]) => ({
+              path: `/produtos/${slug}`,
+              changefreq: "weekly" as const,
+              priority: "0.8",
+            })),
         ];
 
         const urls = entries.map((e) =>
